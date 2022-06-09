@@ -9,11 +9,8 @@ df_mpt <- get_locs(watina) %>%
   collect %>%
   as.data.frame
 
-head(df_mpt)
 
-ggplot(df_mpt, aes(x = x, y = y)) + geom_point() + coord_equal()
-
-
+saveRDS(df_mpt, file = "./data/interim/df_mpt.RDS")
 
 
 
