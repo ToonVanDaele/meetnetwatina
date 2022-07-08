@@ -1,0 +1,94 @@
+---
+title: "2_Overview"
+author: "Toon Van Daele"
+date: '2022-06-09'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+df_mpt <- readRDS(file = "../data/interim/df_mpt.RDS")
+df_reg <- readRDS(file = "../data/interim/df_reg.RDS")
+```
+
+## Meetlocaties
+
+### Status van de meetpunten
+
+```{r}
+df_mpt %>%
+  mutate(obswell_state = factor(obswell_state)) %>%
+  group_by(obswell_state) %>%
+  count()
+```
+### Spreiding van de meetlocaties
+
+Enkele meetpunten zonder x,y coordinaten
+```{r}
+df_mpt %>%
+  filter(obswell_statecode == "CONFM") %>%
+  filter(is.na(x))
+```
+
+
+```{r}
+df_mpt %>%
+  filter(obswell_statecode == "CONFM") %>%
+  filter(!is.na(x)) %>%
+  ggplot(aes(x = x, y = y)) + geom_point() + coord_equal()
+```
+
+
+## Aantal gebieden 
+
+```{r}
+df_mpt %>%
+  group_by(area_code) %>%
+  count()
+```
+
+Aantal gebieden met bemeten meetpunten
+
+
+```{r}
+df_mpt %>%
+  filter(obswell_statecode == "CONFM") %>%
+  group_by(area_code) %>%
+  count()
+```
+
+Ligging van de gebieden met bemeten meetpunten
+
+```{r}
+df_mpt %>%
+  group_by(area_code) %>%
+  summarise(cbem = sum(obswell_statecode == "CONFM")) %>%
+  mutate(bem = ifelse(cbem > 0, "bemeten", "niet bemeten")) %>%
+  left_join(df_reg, by = c("area_code" = "GebiedCode")) %>%
+  ggplot(aes(x = GebiedXCoordinaat, y = GebiedYCoordinaat, colour = bem)) +
+  geom_point() + coord_equal()
+```
+
+
+
+## Tijd tussen metingen en validatie in databank
+
+
+Overzicht van de tijd tussen metingen en 1) invullen in de databank 2) validatie
+
+
+? is er verschil tussen 'ok bemeten' en effectief bemeten op basis van recente peilmetingen?
+
+
+## Meetpunten met geregelde peilmetingen over een langere periode 
+
+
+
+## Meetpunten met chemische analyses 
+
+
+## 

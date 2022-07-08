@@ -1,0 +1,55 @@
+
+---
+title: "3 Recent bemeten"
+author: "Toon Van Daele"
+date: '2022-06-09'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+df_mpt <- readRDS(file = "../data/interim/df_mpt.RDS")
+```
+
+# Overzicht metingen in Watina
+
+## Doelstelling
+
+Doel van deze doorlichting is een overzicht te krijgen van welke meetpunten 
+in Watina aanwezig zijn, welke meetpunten actueel nog bemeten worden en met welk doel.
+
+Watina is op zich geen meetnet. Het is een databank met grondwatergegevens. De
+data zijn door de jaren heen verzameld, gearchiveerd. 
+
+Het duurt meerdere jaren om de waterhuishouding in een gebied in kaart te brengen. 
+
+Voor alle opgesomde meetdoelstellingen wordt een kwalitatieve inschatting gemaakt in welke mate de actueel bemeten meetpunten een antwoord bieden op de doelstellingen: zijn er teveel of te weinig meetlocaties, liggen de meetlocaties op de juiste, frequentie, enz...
+
+Dit overzicht past binnen twee projecten
+
+  - 'Ontwerp en revisie van meetnetten' (INBOPRJ-15601) en
+  - 'Meetnetten Natura 2000: ontwikkeling en implementatie meetnetten natuurlijk milieu' (INBOPRJ-9685)?
+
+
+### Meetdoelstellingen
+
+  - NICHE Vlaanderen: meetpunten die gebruikt worden om de GxG waarden voor NICHE Vlaandern in te geven
+  - Peilmetingen in natuurgebieden: meetpunten die door de lokale beheerder worden opgevolgd en doorggeven aan INBO voor de Watina databank.
+  - Ecohydrologische studies: meetpunten die vaak in het kader voor een ecohydrologische studie werden geplaatst en vaak enkele jaren opgevolgd.
+  - Droogtemeetnet:  ## navragen bij Jan Wouters
+  - Overstromingen:
+  - Opvolgen van inrichting
+  - Habnorm
+  - 
+
+  - gebruik door studiebureau's
+
+# Recent bemeten
+
+We maken een selectie van de meetpunten waar recent nog metingen op
+gebeurd zijn. Met deze selectie gaan we verder aan de slag.
+
